@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>La Rueda del Reino Medieval</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Poppins, sans-serif;
+
+        background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+          url('https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=1600&q=80');
+
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+      }
+
+      .oculto {
+        display: none;
+      }
+
+      #inicio {
+        width: 90%;
+        max-width: 1100px;
+
+        margin: 40px auto;
+
+        background: #f5e6b7;
+
+        padding: 35px;
+
+        border-radius: 20px;
+
+        box-shadow: 0 0 25px black;
+
+        border: 8px solid #6b4423;
+      }
+
+      h1 {
+        font-family: Cinzel, serif;
+
+        text-align: center;
+
+        color: #5a2e00;
+
+        font-size: 42px;
+
+        margin-bottom: 20px;
+      }
+
+      h2 {
+        font-family: Cinzel, serif;
+
+        color: #5a2e00;
+
+        margin-bottom: 10px;
+      }
+
+      p,
+      li {
+        color: #222;
+
+        line-height: 1.8;
+      }
+
+      .caja {
+        background: white;
+
+        padding: 20px;
+
+        margin-top: 20px;
+
+        border-left: 8px solid brown;
+
+        border-radius: 12px;
+      }
+
+      ul {
+        padding-left: 25px;
+      }
+
+      input {
+        width: 100%;
+
+        padding: 15px;
+
+        font-size: 18px;
+
+        margin-top: 20px;
+
+        border-radius: 10px;
+
+        border: 2px solid #8d6e63;
+      }
+
+      button {
+        margin-top: 30px;
+
+        padding: 15px 35px;
+
+        font-size: 20px;
+
+        background: #7b4a12;
+
+        color: white;
+
+        border: none;
+
+        border-radius: 10px;
+
+        cursor: pointer;
+
+        transition: 0.4s;
+
+        font-weight: bold;
+      }
+
+      button:hover {
+        background: #a25f18;
+
+        transform: scale(1.05);
+      }
+
+      #actividad {
+        display: none;
+
+        width: 95%;
+
+        max-width: 1200px;
+
+        margin: 25px auto;
+
+        background: #f5e6b7;
+
+        padding: 20px;
+
+        border-radius: 20px;
+
+        box-shadow: 0 0 20px black;
+      }
+
+      #actividad h2 {
+        text-align: center;
+
+        margin-bottom: 20px;
+      }
+
+      .geogebra {
+        background: white;
+
+        padding: 15px;
+
+        border-radius: 15px;
+
+        text-align: center;
+      }
+
+      .geogebra iframe {
+        width: 100%;
+
+        height: 600px;
+
+        border: none;
+      }
+
+      #bienvenida {
+        font-size: 22px;
+
+        text-align: center;
+
+        margin-bottom: 20px;
+
+        font-weight: bold;
+
+        color: #5a2e00;
+      }
+
+      footer {
+        text-align: center;
+
+        margin-top: 20px;
+
+        color: #5a2e00;
+
+        font-weight: bold;
+      }
+
+      @media (max-width: 900px) {
+        .geogebra iframe {
+          height: 450px;
+        }
+
+        h1 {
+          font-size: 30px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="inicio">
+      <h1>⚔ La Rueda del Reino Medieval ⚔</h1>
+
+      <div class="caja">
+        <h2>📜 Reglas del juego</h2>
+
+        <ul>
+          <li>Escriba su nombre antes de comenzar.</li>
+
+          <li>Lea cuidadosamente cada ejercicio presentado en GeoGebra.</li>
+
+          <li>Interactúe con la actividad para resolver los desafíos.</li>
+
+          <li>
+            Complete los tres ejercicios siguiendo las instrucciones del
+            recurso.
+          </li>
+
+          <li>Trabaje con atención antes de finalizar.</li>
+        </ul>
+      </div>
+
+      <div class="caja">
+        <h2>🏰 Misión</h2>
+
+        <p>
+          El herrero del reino necesita fabricar un nuevo aro de hierro para la
+          gran rueda del molino. Como aprendiz del maestro constructor, deberás
+          utilizar tus conocimientos sobre la longitud de una circunferencia
+          para ayudar a reconstruir la rueda y devolver el funcionamiento del
+          molino. ¡Buena suerte en tu misión!
+        </p>
+      </div>
+
+      <input type="text" id="nombre" placeholder="Ingrese su nombre" />
+
+      <center>
+        <button onclick="iniciar()">Comenzar misión</button>
+      </center>
+    </div>
+
+    <div id="actividad">
+      <div id="bienvenida"></div>
+
+      <h2>Interactúa con GeoGebra</h2>
+
+      <div class="geogebra">
+        <iframe
+          scrolling="no"
+          title="Cálculo de la longitud de una circunferencia"
+          src="https://www.geogebra.org/material/iframe/id/qujg9zdx/width/800/height/500/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/false/ctl/false"
+        >
+        </iframe>
+      </div>
+
+      <footer>
+        ⚔ Desarrollado para fortalecer el aprendizaje de la longitud de la
+        circunferencia ⚔
+      </footer>
+    </div>
+
+    <script>
+      function iniciar() {
+        let nombre = document.getElementById('nombre').value.trim();
+
+        if (nombre == '') {
+          alert('Debe escribir su nombre.');
+
+          return;
+        }
+
+        document.getElementById('inicio').style.display = 'none';
+
+        document.getElementById('actividad').style.display = 'block';
+
+        document.getElementById('bienvenida').innerHTML =
+          'Bienvenido <b>' +
+          nombre +
+          '</b>. Completa la misión interactuando con la actividad de GeoGebra.';
+      }
+    </script>
+  </body>
+</html>
