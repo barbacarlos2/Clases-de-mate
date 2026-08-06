@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Media, Mediana y Moda</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /*==============================*/
+      /* BOTÓN */
+      /*==============================*/
+
+      .btnCuestionario {
+        display: inline-block;
+
+        padding: 18px 45px;
+
+        background: linear-gradient(45deg, #2563eb, #3b82f6);
+
+        color: white;
+
+        text-decoration: none;
+
+        font-size: 20px;
+
+        font-weight: 600;
+
+        border-radius: 50px;
+
+        transition: 0.4s;
+
+        box-shadow: 0 15px 25px rgba(37, 99, 235, 0.35);
+      }
+
+      .btnCuestionario:hover {
+        transform: translateY(-6px) scale(1.05);
+
+        box-shadow: 0 20px 35px rgba(37, 99, 235, 0.45);
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+      }
+
+      body {
+        background: linear-gradient(135deg, #eef6ff, #dbeafe, #eff6ff);
+
+        overflow-x: hidden;
+
+        color: #1f2937;
+      }
+
+      /*==============================*/
+      /* FONDO ANIMADO */
+      /*==============================*/
+
+      .background {
+        position: fixed;
+
+        width: 100%;
+
+        height: 100%;
+
+        left: 0;
+
+        top: 0;
+
+        overflow: hidden;
+
+        z-index: -2;
+      }
+
+      .circle {
+        position: absolute;
+
+        border-radius: 50%;
+
+        background: rgba(59, 130, 246, 0.12);
+
+        animation: float 18s infinite linear;
+      }
+
+      .circle:nth-child(1) {
+        width: 220px;
+
+        height: 220px;
+
+        left: 5%;
+
+        top: 10%;
+
+        animation-duration: 20s;
+      }
+
+      .circle:nth-child(2) {
+        width: 150px;
+
+        height: 150px;
+
+        right: 10%;
+
+        top: 18%;
+
+        animation-duration: 24s;
+      }
+
+      .circle:nth-child(3) {
+        width: 180px;
+
+        height: 180px;
+
+        left: 40%;
+
+        bottom: 8%;
+
+        animation-duration: 22s;
+      }
+
+      .circle:nth-child(4) {
+        width: 100px;
+
+        height: 100px;
+
+        right: 25%;
+
+        bottom: 25%;
+
+        animation-duration: 16s;
+      }
+
+      .circle:nth-child(5) {
+        width: 250px;
+
+        height: 250px;
+
+        left: 70%;
+
+        top: 60%;
+
+        animation-duration: 30s;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(0px) rotate(0deg);
+        }
+
+        50% {
+          transform: translateY(-35px) rotate(180deg);
+        }
+
+        100% {
+          transform: translateY(0px) rotate(360deg);
+        }
+      }
+
+      /*==============================*/
+      /* NÚMEROS FLOTANTES */
+      /*==============================*/
+
+      .number {
+        position: absolute;
+
+        font-size: 42px;
+
+        font-weight: bold;
+
+        color: rgba(37, 99, 235, 0.08);
+
+        animation: moveNumber 18s linear infinite;
+
+        user-select: none;
+      }
+
+      @keyframes moveNumber {
+        0% {
+          transform: translateY(100vh);
+
+          opacity: 0;
+        }
+
+        20% {
+          opacity: 1;
+        }
+
+        80% {
+          opacity: 1;
+        }
+
+        100% {
+          transform: translateY(-150px);
+
+          opacity: 0;
+        }
+      }
+
+      /*==============================*/
+
+      .container {
+        width: 92%;
+
+        max-width: 1250px;
+
+        margin: auto;
+      }
+
+      /*==============================*/
+      /* HERO */
+      /*==============================*/
+
+      .hero {
+        margin-top: 40px;
+
+        background: rgba(255, 255, 255, 0.55);
+
+        backdrop-filter: blur(14px);
+
+        border-radius: 25px;
+
+        padding: 60px;
+
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+
+        text-align: center;
+
+        position: relative;
+
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: '';
+
+        position: absolute;
+
+        width: 300px;
+
+        height: 300px;
+
+        background: #60a5fa33;
+
+        border-radius: 50%;
+
+        right: -100px;
+
+        top: -100px;
+      }
+
+      .hero::after {
+        content: '';
+
+        position: absolute;
+
+        width: 220px;
+
+        height: 220px;
+
+        background: #3b82f622;
+
+        border-radius: 50%;
+
+        left: -60px;
+
+        bottom: -80px;
+      }
+
+      .hero h1 {
+        font-size: 55px;
+
+        color: #1d4ed8;
+
+        margin-bottom: 15px;
+
+        position: relative;
+
+        z-index: 2;
+      }
+
+      .hero p {
+        font-size: 22px;
+
+        max-width: 850px;
+
+        margin: auto;
+
+        position: relative;
+
+        z-index: 2;
+
+        line-height: 1.7;
+      }
+
+      /*==============================*/
+
+      .iconRow {
+        display: flex;
+
+        justify-content: center;
+
+        gap: 40px;
+
+        margin-top: 35px;
+
+        font-size: 45px;
+
+        position: relative;
+
+        z-index: 2;
+      }
+
+      .iconRow div {
+        animation: bounce 2.5s infinite;
+      }
+
+      .iconRow div:nth-child(2) {
+        animation-delay: 0.4s;
+      }
+
+      .iconRow div:nth-child(3) {
+        animation-delay: 0.8s;
+      }
+
+      .iconRow div:nth-child(4) {
+        animation-delay: 1.2s;
+      }
+
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      /*==============================*/
+
+      .sectionTitle {
+        text-align: center;
+
+        font-size: 36px;
+
+        margin-top: 70px;
+
+        margin-bottom: 30px;
+
+        color: #1e3a8a;
+      }
+
+      /*==============================*/
+
+      .intro {
+        background: white;
+
+        padding: 35px;
+
+        border-radius: 20px;
+
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
+
+        font-size: 19px;
+
+        line-height: 1.9;
+      }
+
+      /*==============================*/
+      /* TARJETAS */
+      /*==============================*/
+
+      .cards {
+        display: grid;
+
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+
+        gap: 28px;
+
+        margin-top: 45px;
+      }
+
+      .card {
+        background: white;
+
+        padding: 35px;
+
+        border-radius: 20px;
+
+        transition: 0.4s;
+
+        box-shadow: 0 15px 25px rgba(0, 0, 0, 0.08);
+
+        position: relative;
+
+        overflow: hidden;
+      }
+
+      .card:hover {
+        transform: translateY(-12px);
+
+        box-shadow: 0 25px 45px rgba(0, 0, 0, 0.15);
+      }
+
+      .card::before {
+        content: '';
+
+        position: absolute;
+
+        width: 100%;
+
+        height: 8px;
+
+        left: 0;
+
+        top: 0;
+      }
+
+      .media::before {
+        background: #2563eb;
+      }
+
+      .mediana::before {
+        background: #16a34a;
+      }
+
+      .moda::before {
+        background: #f59e0b;
+      }
+
+      .card h2 {
+        font-size: 30px;
+
+        margin-bottom: 18px;
+      }
+
+      .card p {
+        line-height: 1.8;
+
+        font-size: 17px;
+      }
+
+      .card span {
+        font-size: 55px;
+
+        display: block;
+
+        margin-bottom: 15px;
+      }
+
+      /*==============================*/
+
+      .fade {
+        opacity: 0;
+
+        transform: translateY(50px);
+
+        transition: 1s;
+      }
+
+      .fade.show {
+        opacity: 1;
+
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="background">
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+
+      <div class="number" style="left: 5%; animation-delay: 0s">12</div>
+      <div class="number" style="left: 18%; animation-delay: 3s">35</div>
+      <div class="number" style="left: 33%; animation-delay: 7s">48</div>
+      <div class="number" style="left: 52%; animation-delay: 2s">21</div>
+      <div class="number" style="left: 70%; animation-delay: 5s">97</div>
+      <div class="number" style="left: 88%; animation-delay: 9s">63</div>
+    </div>
+
+    <div class="container">
+      <section class="hero fade">
+        <h1>📊 Media, Mediana y Moda</h1>
+
+        <p>
+          Descubre cómo las medidas de tendencia central permiten resumir un
+          conjunto de datos y observa cómo los valores atípicos pueden modificar
+          los resultados mediante una actividad interactiva de GeoGebra.
+        </p>
+
+        <div class="iconRow">
+          <div>📈</div>
+
+          <div>📊</div>
+
+          <div>📉</div>
+
+          <div>🔢</div>
+        </div>
+      </section>
+
+      <h2 class="sectionTitle fade">
+        ¿Qué son las medidas de tendencia central?
+      </h2>
+
+      <div class="intro fade">
+        Las medidas de tendencia central son herramientas estadísticas que
+        permiten representar un conjunto de datos mediante un único valor que
+        describe su comportamiento general. Las más utilizadas son la
+        <strong>media</strong>, la <strong>mediana</strong> y la
+        <strong>moda</strong>. Cada una proporciona información diferente y
+        resulta útil dependiendo de las características de los datos analizados.
+      </div>
+
+      <h2 class="sectionTitle fade">Conceptos principales</h2>
+
+      <div class="cards">
+        <div class="card media fade">
+          <span>📘</span>
+
+          <h2>Media</h2>
+
+          <p>
+            La media aritmética corresponde al promedio de todos los datos. Se
+            obtiene sumando cada uno de los valores y dividiendo el resultado
+            entre la cantidad total de datos. Es muy útil cuando los datos no
+            presentan valores extremadamente altos o bajos.
+          </p>
+        </div>
+
+        <div class="card mediana fade">
+          <span>📗</span>
+
+          <h2>Mediana</h2>
+
+          <p>
+            La mediana es el valor que ocupa la posición central cuando los
+            datos se organizan de menor a mayor. Si existe un valor atípico,
+            normalmente la mediana cambia muy poco, por lo que representa mejor
+            el centro del conjunto.
+          </p>
+        </div>
+
+        <div class="card moda fade">
+          <span>📙</span>
+
+          <h2>Moda</h2>
+
+          <p>
+            La moda corresponde al dato que más veces se repite dentro del
+            conjunto. Puede existir más de una moda o incluso no existir si
+            todos los valores aparecen con la misma frecuencia.
+          </p>
+        </div>
+      </div>
+      <!-- ============================= -->
+      <!-- EXPLORACIÓN INTERACTIVA -->
+      <!-- ============================= -->
+
+      <h2 class="sectionTitle fade">Explora la actividad interactiva</h2>
+
+      <div class="intro fade" style="text-align: center; margin-bottom: 35px">
+        Manipula los datos dentro del recurso de GeoGebra y observa cómo los
+        <strong>valores atípicos</strong> afectan la <strong>media</strong>, la
+        <strong>mediana</strong> y el <strong>rango</strong>. Analiza qué medida
+        cambia más cuando aparece un dato extremadamente grande o pequeño.
+      </div>
+
+      <div
+        class="fade"
+        style="
+          background: white;
+          padding: 25px;
+          border-radius: 20px;
+          box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+          margin-bottom: 50px;
+          text-align: center;
+        "
+      >
+        <iframe
+          scrolling="no"
+          title="Efecto de los valores atípicos en la media, mediana y rango"
+          src="https://www.geogebra.org/material/iframe/id/sh3qaev6/width/800/height/500/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/false/ctl/false"
+          width="100%"
+          height="560"
+          style="border: 0; border-radius: 15px"
+        >
+        </iframe>
+      </div>
+
+      <!-- ============================= -->
+      <!-- OBSERVACIONES -->
+      <!-- ============================= -->
+
+      <h2 class="sectionTitle fade">¿Qué puedes observar?</h2>
+
+      <div class="cards">
+        <div class="card fade">
+          <span>🔍</span>
+
+          <h2>Observa</h2>
+
+          <p>
+            ¿Qué ocurre con la media cuando agregas un número muy grande? ¿Se
+            mueve considerablemente respecto al resto de los datos?
+          </p>
+        </div>
+
+        <div class="card fade">
+          <span>🧠</span>
+
+          <h2>Analiza</h2>
+
+          <p>
+            Compara la media y la mediana. ¿Cuál cambia más al modificar un
+            único dato extremo? ¿Por qué sucede esto?
+          </p>
+        </div>
+
+        <div class="card fade">
+          <span>💬</span>
+
+          <h2>Reflexiona</h2>
+
+          <p>
+            En la vida real existen datos con valores muy altos o muy bajos.
+            ¿Cuál medida de tendencia central consideras que representa mejor la
+            información?
+          </p>
+        </div>
+      </div>
+
+      <!-- ============================= -->
+      <!-- CURIOSIDAD -->
+      <!-- ============================= -->
+
+      <h2 class="sectionTitle fade">Curiosidad</h2>
+
+      <div class="intro fade">
+        📊 En economía y ciencias sociales muchas veces se utiliza la
+        <strong>mediana</strong> para representar los ingresos de una población,
+        ya que unos pocos valores extremadamente altos pueden alterar mucho la
+        <strong>media</strong>, mientras que la mediana permanece más estable y
+        representa mejor el comportamiento del grupo.
+      </div>
+
+      <!-- ============================= -->
+      <!-- PIE -->
+      <!-- ============================= -->
+      <!-- ============================= -->
+      <!-- BOTÓN PARA EL CUESTIONARIO -->
+      <!-- ============================= -->
+
+      <div
+        class="fade"
+        style="text-align: center; margin-top: 60px; margin-bottom: 60px"
+      >
+        <h2 style="font-size: 32px; color: #1d4ed8; margin-bottom: 20px">
+          ¿Terminaste de explorar la actividad?
+        </h2>
+
+        <p style="font-size: 18px; margin-bottom: 30px; line-height: 1.8">
+          Ahora demuestra lo aprendido respondiendo un breve cuestionario.
+        </p>
+
+        <a href="cuestionario.html" class="btnCuestionario">
+          Responder preguntas →
+        </a>
+      </div>
+      <footer
+        class="fade"
+        style="
+          margin-top: 70px;
+          margin-bottom: 40px;
+          background: #2563eb;
+          color: white;
+          padding: 30px;
+          border-radius: 20px;
+          text-align: center;
+          box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        "
+      >
+        <h2 style="margin-bottom: 10px">📈 Estadística Descriptiva</h2>
+
+        <p style="font-size: 18px; line-height: 1.8">
+          La exploración y el análisis de los datos permiten comprender mejor la
+          información y tomar decisiones fundamentadas.
+        </p>
+      </footer>
+    </div>
+
+    <!-- ============================= -->
+    <!-- JAVASCRIPT -->
+    <!-- ============================= -->
+
+    <script>
+      // Animación al hacer scroll
+
+      const elementos = document.querySelectorAll('.fade');
+
+      function mostrar() {
+        const trigger = window.innerHeight * 0.88;
+
+        elementos.forEach((el) => {
+          const top = el.getBoundingClientRect().top;
+
+          if (top < trigger) {
+            el.classList.add('show');
+          }
+        });
+      }
+
+      window.addEventListener('scroll', mostrar);
+
+      mostrar();
+
+      // Crear números flotantes automáticamente
+
+      const fondo = document.querySelector('.background');
+
+      function crearNumero() {
+        const numero = document.createElement('div');
+
+        numero.className = 'number';
+
+        numero.style.left = Math.random() * 100 + '%';
+
+        numero.style.animationDuration = 12 + Math.random() * 10 + 's';
+
+        numero.style.fontSize = 25 + Math.random() * 30 + 'px';
+
+        numero.innerHTML = Math.floor(Math.random() * 90 + 10);
+
+        fondo.appendChild(numero);
+
+        setTimeout(() => {
+          numero.remove();
+        }, 22000);
+      }
+
+      setInterval(crearNumero, 2500);
+
+      // Crear pequeñas barras estadísticas
+
+      function crearBarra() {
+        const barra = document.createElement('div');
+
+        barra.style.position = 'absolute';
+
+        barra.style.bottom = '0';
+
+        barra.style.left = Math.random() * 100 + '%';
+
+        barra.style.width = '8px';
+
+        barra.style.height = 30 + Math.random() * 80 + 'px';
+
+        barra.style.background = 'rgba(37,99,235,.12)';
+
+        barra.style.borderRadius = '6px';
+
+        barra.style.animation = 'float 10s linear infinite';
+
+        fondo.appendChild(barra);
+
+        setTimeout(() => {
+          barra.remove();
+        }, 12000);
+      }
+
+      setInterval(crearBarra, 1800);
+    </script>
+  </body>
+</html>
