@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Cuestionario de Estadística</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+      }
+
+      body {
+        background: linear-gradient(135deg, #eef6ff, #dbeafe, #eff6ff);
+
+        color: #1f2937;
+
+        overflow-x: hidden;
+      }
+
+      /*==============================*/
+      /* FONDO ANIMADO */
+      /*==============================*/
+
+      .background {
+        position: fixed;
+
+        width: 100%;
+
+        height: 100%;
+
+        top: 0;
+
+        left: 0;
+
+        overflow: hidden;
+
+        z-index: -1;
+      }
+
+      .circle {
+        position: absolute;
+
+        border-radius: 50%;
+
+        background: rgba(37, 99, 235, 0.12);
+
+        animation: flotar 18s infinite linear;
+      }
+
+      .circle:nth-child(1) {
+        width: 240px;
+
+        height: 240px;
+
+        left: 5%;
+
+        top: 10%;
+      }
+
+      .circle:nth-child(2) {
+        width: 160px;
+
+        height: 160px;
+
+        right: 10%;
+
+        top: 20%;
+      }
+
+      .circle:nth-child(3) {
+        width: 200px;
+
+        height: 200px;
+
+        left: 45%;
+
+        bottom: 10%;
+      }
+
+      @keyframes flotar {
+        0% {
+          transform: translateY(0px);
+        }
+
+        50% {
+          transform: translateY(-40px);
+        }
+
+        100% {
+          transform: translateY(0px);
+        }
+      }
+
+      /*==============================*/
+      /* CONTENEDOR */
+      /*==============================*/
+
+      .container {
+        width: 92%;
+
+        max-width: 1200px;
+
+        margin: auto;
+      }
+
+      /*==============================*/
+      /* ENCABEZADO */
+      /*==============================*/
+
+      .hero {
+        margin-top: 45px;
+
+        padding: 55px;
+
+        background: rgba(255, 255, 255, 0.6);
+
+        backdrop-filter: blur(15px);
+
+        border-radius: 25px;
+
+        text-align: center;
+
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+      }
+
+      .hero h1 {
+        font-size: 48px;
+
+        color: #2563eb;
+
+        margin-bottom: 20px;
+      }
+
+      .hero p {
+        font-size: 20px;
+
+        line-height: 1.8;
+      }
+
+      /*==============================*/
+      /* FORMULARIO */
+      /*==============================*/
+
+      .formulario {
+        margin-top: 50px;
+
+        background: white;
+
+        padding: 35px;
+
+        border-radius: 25px;
+
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+
+        text-align: center;
+      }
+
+      .formulario h2 {
+        font-size: 32px;
+
+        color: #1e40af;
+
+        margin-bottom: 25px;
+      }
+
+      /* GOOGLE FORMS */
+
+      .formulario iframe {
+        width: 100%;
+
+        height: 980px;
+
+        border: none;
+
+        border-radius: 15px;
+      }
+
+      /*==============================*/
+      /* BOTON */
+      /*==============================*/
+
+      .btnRegresar {
+        display: inline-block;
+
+        margin: 50px 0;
+
+        padding: 18px 45px;
+
+        background: linear-gradient(45deg, #2563eb, #3b82f6);
+
+        color: white;
+
+        text-decoration: none;
+
+        font-size: 20px;
+
+        font-weight: 600;
+
+        border-radius: 50px;
+
+        transition: 0.4s;
+
+        box-shadow: 0 15px 25px rgba(37, 99, 235, 0.35);
+      }
+
+      .btnRegresar:hover {
+        transform: translateY(-6px) scale(1.05);
+
+        box-shadow: 0 20px 35px rgba(37, 99, 235, 0.45);
+      }
+
+      /*==============================*/
+      /* DECORACIÓN */
+      /*==============================*/
+
+      .iconos {
+        font-size: 45px;
+
+        margin-top: 25px;
+
+        animation: movimiento 3s infinite;
+      }
+
+      @keyframes movimiento {
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="background">
+      <div class="circle"></div>
+
+      <div class="circle"></div>
+
+      <div class="circle"></div>
+    </div>
+
+    <div class="container">
+      <section class="hero">
+        <h1>📝 Responde las siguientes preguntas cortas</h1>
+
+        <p>
+          Después de explorar la actividad interactiva sobre la media, mediana y
+          moda, responde las siguientes preguntas para demostrar lo aprendido
+          sobre el efecto de los valores atípicos en los datos estadísticos.
+        </p>
+
+        <div class="iconos">📊 📈 🔢</div>
+      </section>
+
+      <section class="formulario">
+        <h2>📚 Cuestionario de Estadística</h2>
+
+        <p style="font-size: 18px; margin-bottom: 25px">
+          Lee cuidadosamente cada pregunta y responde utilizando los
+          conocimientos adquiridos durante la actividad.
+        </p>
+
+        <!-- GOOGLE FORMS -->
+
+        <iframe
+          src="https://docs.google.com/forms/d/e/1FAIpQLSd8unTi54KjQaJpQ7ONUUA_PpOF5ZsBdXu6rwe3iU6mzVMkew/viewform?embedded=true"
+          width="640"
+          height="980"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0"
+        >
+          Cargando…
+        </iframe>
+      </section>
+
+      <div style="text-align: center">
+        <a href="index.html" class="btnRegresar"> ← Volver a la actividad </a>
+      </div>
+    </div>
+  </body>
+</html>
